@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var cors = require('cors')
 
 var mongoose = require('mongoose');
 var dbURI = "mongodb://wedding:wedding123@ds131742.mlab.com:31742/apaja";
@@ -19,11 +20,11 @@ mongoose.connection.on('error',function (err) {
   console.log('Mongoose default connection error: ' + err);
 }); 
 
-
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
+app.use(cors());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
