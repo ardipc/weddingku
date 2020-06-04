@@ -42,9 +42,9 @@ router.post('/kehadiran', function(req, res, next) {
 
 	var newRow = new Kehadiran(row);
 	newRow.save().then(data => {
-		res.json({ error: false, result: data });
+		res.json({ error: false, status: 'success', result: data });
 	}).catch(err => {
-		res.json({ error: true, result: err });
+		res.json({ error: true, status: 'error', result: err });
 	});
 });
 
